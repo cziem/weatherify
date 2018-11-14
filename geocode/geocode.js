@@ -1,6 +1,6 @@
 const request = require('request')
 
-const geocodeAdress = (address) => {
+const geocodeAdress = (address, callback) => {
   let encodedAddress = encodeURI(address)
 
   return request({
@@ -9,13 +9,15 @@ const geocodeAdress = (address) => {
   }, (error, response, body) => {
     // console.log(JSON.stringify(body, undefined, 2)) // pretty printing
     if (error) {
-      console.log('Unable to connect to google servers.')
+      callback('Unable to connect to google servers.')
     } else if (body.status === 'ZERO_RESULTS') {
-      console.log('Unable to locate the provided address')
+      callback('Unable to locate the provided address')
     } else if (body.status === 'OK') {
-      console.log(`Address: ${body.results[0].formatted_address}`)
-      console.log(`Latitude: ${body.results[0].geometry.location.lat}`)
-      console.log(`Longitude: ${body.results[0].geometry.location.lng}`)
+      callback(undefined, {
+        address: body.results[0].formatted_address,
+        lat: body.results[0].geometry.location.lat,
+        lng: body.results[0].geometry.location.lng
+      })
     }
   })
 }
