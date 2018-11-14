@@ -1,0 +1,28 @@
+{
+  "name": "weatherify",
+  "version": "1.0.0",
+  "description": "A weather app to learn the use of googleapis and nodejs",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phavor/weatherify.git"
+  },
+  "keywords": [
+    "googleapi",
+    "nodejs",
+    "weather-app"
+  ],
+  "author": "Fayvor George",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phavor/weatherify/issues"
+  },
+  "homepage": "https://github.com/phavor/weatherify#readme",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "request": "^2.73.0"
+  }
+}
