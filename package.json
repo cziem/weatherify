@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/phavor/weatherify#readme",
   "dependencies": {
+    "axios": "^0.13.1",
     "dotenv": "^6.1.0",
     "request": "^2.88.0",
     "yargs": "^4.8.1"
