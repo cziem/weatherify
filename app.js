@@ -1,6 +1,7 @@
 require('dotenv').config()
 const yargs = require('yargs')
 const geocode = require('./geocode/geocode')
+const weather = require('./weather/weather')
 
 const argv = yargs.options({
   a: {
@@ -18,6 +19,16 @@ geocode.geocodeAdress(argv.address, (errorMessage, results) => {
   if (errorMessage) {
     console.log(errorMessage)
   } else {
-    console.log(JSON.stringify(results, undefined, 2))
+    // display the address querried
+    console.log(results.address)
+
+    // Get the weather results from our weatherify api
+    weather.getWeather(results.lat, results.lng, (errorMessage, weatherResults) => {
+      if (errorMessage) {
+        console.log(errorMessage)
+      } else {
+        console.log(`It's currently ${weatherResults.temperature}. It feels like ${weatherResults.apparentTemperature}.`)
+      }
+    })
   }
 })
